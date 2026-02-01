@@ -4,82 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laundry Wallah</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Welcome to Laundry Wallah / Laundry Mart</title>
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to Laundry Wallah / Laundry Mart</h1>
-    </header>
+    <section class="big-screen-navbar">
+        <header>
+            <nav>
+                <div class="logo">
+                    <a href="#">Logo</a>
+                </div>
+                <div class="menu-links">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="username">
+                    <a href="#">Username</a>
+                </div>
+            </nav>
+        </header>
+    </section>
+    <!-- mobile-nav -->
+    <section class="mobile-section">
+        <header>
+            <nav>
+                <div class="logo">
+                    <a href="#">Logo</a>
+                </div>
+                <div class="menu-links">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="username">
+                    <a href="#">Username</a>
+                </div>
+
+            </nav>
+        </header>
+    </section>
     <!-- header section end here -->
-
-    <section class="about">
-        <p>Welcome to Laundry Wallah/Laundry Mart, your one-stop- solution for all your Laundry needs. Our dedicated
-            team ensure top-notch service, providing a hassle-free and efficient Laundry experience. With a focus on
-            quality and customer satisfaction, we take care of your garments as if they were our own.</p>
+    <section class="hero-section">
+        <div class="left">
+            <h1>Revitalize Your <br /> Clothes with Expert <br /> <span>Laundry Services!</span></h1>
+            <p>From premium dry cleaning to swift wash and fold, we <br /> deliver care and convienence. Schedule a
+                pickup and <br />
+                rediscover the freshness of your clothes today!</p>
+            <button><a href="#">Book a service today!</a></button>
+        </div>
+        <div class="right">
+            <img src="/img/laundry_image.png" alt="Laundry Image">
+        </div>
     </section>
-    <!-- about section end here -->
-
-    <img src="https://static.vecteezy.com/system/resources/thumbnails/026/721/193/small/washing-machine-and-laundry-laundry-sticker-png.png"
-        alt="Laundry Wallah">
-    <!-- image section end here -->
-
-    <section class="service">
-        <h2>Our Services</h2>
-
-        <ul>
-            <li>Washing and Drying</li>
-            <li>Ironing and Folding</li>
-            <li>Dry Cleaning</li>
-            <li>Stain Removal</li>
-            <li>Express Services</li>
-            <li>Special Garment Care</li>
-            <li>and more</li>
-        </ul>
-    </section>
-    <!-- service section end here -->
-    <section class="price-list">
-        <h2>Price List</h2>
-        <table border="">
-            <thead style="text-align: center;">
-                <td> <strong>Service</strong></td>
-                <td> <strong>Price</strong> </td>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Washing and Drying</td>
-                    <td>$10.00</td>
-                </tr>
-                <tr>
-                    <td>Ironing and Folding</td>
-                    <td>$5.00</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <!-- table section end here -->
-    <br /><br />
-    <section class="book-now">
-        <form action="#">
-            <label for="name">
-                Name:
-            </label>
-            <input type="text" name="text" id="name" required>
-            <label for="email">
-                Email:
-            </label>
-            <input type="email" name="email" id="email" required>
-            <label for="phone">
-                Phone:
-            </label>
-            <input type="number" id="phone" required>
-
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-    <footer>
-        <p>Contact us at info@laundrymart.com</p>
-    </footer>
 </body>
 
 </html>
