@@ -758,11 +758,11 @@ footer {
     }
 
     .qualities-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 
     .subscribe-content {
@@ -915,7 +915,7 @@ footer {
     }
 
     .booking-item-list-right {
-        min-height: 421px;
+        min-height: 371px;
     }
 
     .book-now {
