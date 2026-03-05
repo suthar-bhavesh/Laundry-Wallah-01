@@ -615,6 +615,7 @@ tfoot td:last-child {
     color: #4BB5F9;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 footer {
@@ -639,6 +640,7 @@ footer {
 .about-us p {
     color: #6c757d;
     font-weight: 600;
+    width: 437px;
 }
 
 .about-laundrywala {
@@ -802,6 +804,7 @@ footer {
 
     .subscrib-section {
         height: 250px;
+        margin-top: 52px;
     }
 
     .subscribe-form-fields {
@@ -836,7 +839,7 @@ footer {
 
     .mobile-menus {
         position: absolute;
-        top: 50px;
+        top: 18px;
         background-color: #fff;
         width: 100%;
         height: 250px;
@@ -850,6 +853,7 @@ footer {
     .mobile-menus.Navshow {
         visibility: visible;
         transform: translateY(0);
+        scroll-behavior: smooth;
     }
 
     .mobile-menus ul li {
@@ -886,6 +890,16 @@ footer {
 
     .user-fields {
         width: 100%;
+    }
+
+    .about-us p {
+        width: 100%;
+        text-align: justify;
+    }
+
+    .footer-content {
+        gap: 16px;
+        padding: 40px 0;
     }
 }
 
@@ -992,7 +1006,7 @@ footer {
     }
 
     table {
-        height: 304px;
+        height: 363px;
     }
 
     .item-error {

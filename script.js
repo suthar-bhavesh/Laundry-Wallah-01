@@ -9,6 +9,8 @@ const ClientServicerequest = document.querySelectorAll('.Client-request-input');
 const bookingSection = document.querySelector('.adding-item-booking-section');
 const myForm = document.getElementById('Requestform');
 
+const SubscribeForm = document.querySelector('.subscribe-form');
+
 const menuIcon = document.querySelector('.menu-icon');
 const menuLinks = document.querySelector('.mobile-menus');
 
@@ -20,11 +22,9 @@ menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('fa-xmark');
 });
 
-
 // blank array for storing client services
 
 let Services = [];
-
 
 // service adding function
 
@@ -155,7 +155,7 @@ formDisable();
 UpdateTotal();
 NewServiceList();
 
-// form Submit confirmation
+// form Submit
 
 function formSubmit() {
 
@@ -273,3 +273,21 @@ Booking the Service We will get back to you soon!`;
 }
 
 formSubmit();
+
+$(document).ready(function () {
+    $("a").on('click', function (event) {
+
+        if (this.hash !== "") {
+            event.preventDefault();
+
+            var hash = this.hash;
+
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function () {
+
+                window.location.hash = hash;
+            });
+        }
+    });
+});
