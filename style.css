@@ -763,7 +763,7 @@ footer {
     .hero-content {
         margin-top: 3rem;
         gap: 30px;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .qualities-content {
@@ -895,12 +895,23 @@ footer {
     .about-us p {
         width: 100%;
         text-align: justify;
+        font-size: 12px;
     }
 
     .footer-content {
         gap: 16px;
         padding: 40px 0;
     }
+
+    .section-heading-para p {
+        font-size: 11px;
+    }
+
+    .others-link li a,
+    .contact-link a {
+        font-size: 12px;
+    }
+
 }
 
 
@@ -932,7 +943,7 @@ footer {
 
     .item-error {
         font-size: 13px;
-        bottom: 54px;
+        bottom: 56px !important;
     }
 
     .booking-item-list-right {
@@ -1006,7 +1017,7 @@ footer {
     }
 
     table {
-        height: 363px;
+        height: 261px;
     }
 
     .item-error {
@@ -1033,7 +1044,55 @@ footer {
     .book-now-btn {
         padding: 10px;
     }
+
+    .service-detail p {
+        width: 80px;
+    }
+
+    .service-btn {
+        width: 37%;
+    }
+
+    /* .hero-content {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    } */
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .client-booking-dashboard {
+        padding: 42px 0 42px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
 }
+
+@media screen and (max-width: 1200px) {
+    .service-detail p {
+        width: 80px;
+    }
+
+    .service-btn {
+        width: 37%;
+    }
+
+
+    .about-us p {
+        width: 100%;
+    }
+
+    .footer-content {
+        gap: 60px;
+    }
+
+
+}
+
 
 @keyframes fadeUp {
     from {
