@@ -641,6 +641,8 @@ footer {
     color: #6c757d;
     font-weight: 600;
     width: 437px;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .about-laundrywala {
@@ -667,7 +669,8 @@ footer {
 .contact-link a {
     text-decoration: none;
     color: #6c757d;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .others-link,
