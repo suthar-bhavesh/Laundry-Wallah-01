@@ -70,16 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// error hide logic
-
-function reseterror() {
-    NewitemAdd.addEventListener('click', () => {
-        itemError.classList.add('error-hide');
-    })
-}
-
-reseterror();
-
 // price total 
 
 function UpdateTotal() {
@@ -161,11 +151,9 @@ function formDisable() {
     }
 }
 
-
 formDisable();
 UpdateTotal();
 NewServiceList();
-
 
 // form Submit confirmation
 
@@ -258,6 +246,16 @@ function formSubmit() {
                                 })
                             })
                         }
+
+
+                        NewitemAdd.addEventListener('click', () => {
+                            if (typeof myForm !== 'undefined') {
+                                itemError.classList.add('error-hide');
+                            }
+                            else (
+                                itemError.classList.remove('error-hide')
+                            );
+                        })
 
 
                         setTimeout(() => {
