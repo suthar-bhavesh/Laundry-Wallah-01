@@ -70,6 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// error hide logic
+
+function reseterror() {
+    NewitemAdd.addEventListener('click', () => {
+        itemError.classList.add('error-hide');
+    })
+}
+
+reseterror();
 
 // price total 
 
