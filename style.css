@@ -979,10 +979,6 @@ footer {
         height: 361px;
     }
 
-    table {
-        height: 361px;
-    }
-
     .hero-content h1 {
         font-size: 34px;
     }
@@ -1020,7 +1016,7 @@ footer {
     }
 
     table {
-        height: 261px;
+        height: 100%;
     }
 
     .item-error {
