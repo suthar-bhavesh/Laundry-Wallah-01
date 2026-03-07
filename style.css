@@ -393,18 +393,17 @@ form {
     width: 100%;
     flex-direction: column;
     height: 100%;
-    overflow-y: auto;
     border-collapse: collapse;
 }
 
 table {
     padding: 13px;
-    width: 100%;
     border-collapse: collapse;
     text-align: left;
     height: 272px;
     overflow-y: auto;
     position: relative;
+    table-layout: fixed;
 }
 
 thead {
@@ -432,8 +431,65 @@ tfoot td {
     font-size: 1.1rem;
 }
 
-tfoot td:last-child {
-    text-align: left;
+tbody {
+    display: block;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+
+thead,
+tr {
+    display: table;
+    width: 100%;
+}
+
+.userService td:nth-child(1) {
+    text-align: center;
+}
+
+.userService td:nth-child(3) {
+    width: 40% !important;
+    text-align: center;
+}
+
+td:nth-child(2) {
+    padding: 8px 19px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 28%;
+}
+
+.tfooter:nth-child(2) {
+    width: 30% !important;
+}
+
+.empty-message {
+    height: 100% !important;
+}
+
+.service-list-body {
+    height: 180px;
+}
+
+.service-list-body td {
+    border-bottom: 1px solid #ced4da;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 50px;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: auto;
+}
+
+.tfooter td:nth-child(1) {
+    width: 67% !important;
 }
 
 .service-list {
@@ -729,28 +785,6 @@ footer {
     transition: all 0.5s ease;
 }
 
-.userService {
-    height: 40px;
-    /* display: inline-block; */
-    vertical-align: top;
-}
-
-.service-list-body td {
-    padding: 8px 12px;
-    overflow: hidden;
-    border-bottom: 1px solid #ced4da;
-}
-
-.service-list-table tfoot td {
-    position: sticky;
-    bottom: 0;
-    background-color: #ffffff;
-    z-index: 10;
-    border-top: 2px solid #eee;
-    padding: 15px;
-    border-radius: 20px;
-}
-
 .remove-btn {
     background-color: #f49cbb;
     color: #000;
@@ -915,8 +949,16 @@ footer {
         font-size: 12px;
     }
 
-}
+    tbody{
+        max-height: 274px;
+    }
 
+    .service-list-body {
+        height: 204px;
+    }
+
+
+}
 
 @media screen and (max-width: 468px) {
     .service-content h2 {
@@ -946,11 +988,11 @@ footer {
 
     .item-error {
         font-size: 13px;
-        bottom: 56px !important;
+        bottom: 47px !important;
     }
 
     .booking-item-list-right {
-        min-height: 371px;
+        min-height: 359px;
     }
 
     .book-now {
@@ -1011,9 +1053,9 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 
-    .booking-item-list-right {
+    /* .booking-item-list-right {
         max-height: 100%;
-    }
+    } */
 
     table {
         height: 100%;
@@ -1052,11 +1094,6 @@ footer {
         width: 37%;
     }
 
-    /* .hero-content {
-        flex-wrap: nowrap;
-        flex-direction: column;
-    } */
-
     .hero-content p {
         font-size: 14px;
     }
@@ -1088,8 +1125,6 @@ footer {
     .footer-content {
         gap: 60px;
     }
-
-
 }
 
 

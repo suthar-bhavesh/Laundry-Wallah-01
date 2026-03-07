@@ -11,13 +11,15 @@ const myForm = document.getElementById('Requestform');
 
 const SubscribeForm = document.querySelector('.subscribe-form');
 
+
+// mobile nav logic
+
 const menuIcon = document.querySelector('.menu-icon');
 const menuLinks = document.querySelector('.mobile-menus');
 
 menuIcon.addEventListener('click', () => {
     menuLinks.classList.toggle('Navshow');
 
-    // Icon change logic
     menuIcon.classList.toggle('fa-bars');
     menuIcon.classList.toggle('fa-xmark');
 });
