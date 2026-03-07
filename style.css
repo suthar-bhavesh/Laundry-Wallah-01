@@ -800,7 +800,8 @@ footer {
     .hero-content {
         margin-top: 3rem;
         gap: 30px;
-        justify-content: flex-start;
+        justify-content: center;
+        flex-wrap: nowrap;
     }
 
     .qualities-content {
@@ -812,14 +813,13 @@ footer {
     }
 
     .subscribe-content {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         height: 250px;
     }
 
     .service-content {
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .client-booking-dashboard {
@@ -848,13 +848,21 @@ footer {
         gap: 20px;
     }
 
+    .hero-content h1 {
+        font-size: 29px !important;
+    }
+
     .our-achievements {
         margin-top: 15px;
     }
 
     .price-section-left {
-        width: 100%;
+        width: 100% !important;
         padding: 14px;
+    }
+
+    .adding-item-booking-section {
+        width: 100% !important;
     }
 
     .service-btn {
@@ -871,12 +879,12 @@ footer {
         justify-content: space-between;
         align-items: center;
         position: relative;
-        padding-top: 15px;
+        padding-top: 0;
     }
 
     .mobile-menus {
         position: absolute;
-        top: 18px;
+        top: 6px;
         background-color: #fff;
         width: 100%;
         height: 250px;
@@ -949,7 +957,7 @@ footer {
         font-size: 12px;
     }
 
-    tbody{
+    tbody {
         max-height: 274px;
     }
 
@@ -957,10 +965,45 @@ footer {
         height: 204px;
     }
 
+    .booking-item-list-right {
+        max-height: 362px;
+    }
+
+    .userService td:nth-child(3) {
+        width: 48% !important;
+    }
+
+    .tfooter td:nth-child(1) {
+        width: 69% !important;
+    }
 
 }
 
 @media screen and (max-width: 468px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .service-content {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .service-detail p {
+        width: 52px !important;
+    }
+
+
+    .tfooter td:nth-child(1) {
+        width: 66% !important;
+    }
+
+    .subscribe-content {
+        flex-direction: column !important;
+        align-items: start !important; 
+    }
+
     .service-content h2 {
         font-size: 28px;
     }
@@ -983,7 +1026,7 @@ footer {
     }
 
     .service-btn {
-        width: 33%;
+        width: 40% !important;
     }
 
     .item-error {
@@ -1037,6 +1080,9 @@ footer {
         margin-top: 41px;
     }
 
+    .userService td:nth-child(3) {
+        width: 41% !important;
+    }
 }
 
 
@@ -1095,7 +1141,7 @@ footer {
     }
 
     .hero-content p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .client-booking-dashboard {
@@ -1110,11 +1156,11 @@ footer {
 
 @media screen and (max-width: 1200px) {
     .service-detail p {
-        width: 80px;
+        width: 115px;
     }
 
     .service-btn {
-        width: 37%;
+        width: 35%;
     }
 
 
@@ -1125,6 +1171,60 @@ footer {
     .footer-content {
         gap: 60px;
     }
+
+    .Total-Price {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .Total-amount {
+        font-size: 15px;
+    }
+
+    .hero-content {
+        flex-wrap: nowrap;
+    }
+
+    .price-section-left {
+        width: 62%;
+    }
+
+    .adding-item-booking-section {
+        width: 46%;
+    }
+
+    .booking-item-list-right {
+        max-height: 353px;
+    }
+
+
+    .section-heading-para p {
+        font-size: 12px;
+    }
+
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+}
+
+@media screen and (max-width: 540px) {
+    .hero-content {
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .service-content {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .subscribe-content {
+        flex-direction: column;
+        align-items: start;
+    }
+
 }
 
 
