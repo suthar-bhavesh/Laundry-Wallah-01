@@ -195,9 +195,6 @@ function formSubmit() {
                 total_price: `${EmailTotal}`
             };
 
-            console.log("Sending Params", templateParams);
-
-
             emailjs.send(serviceID, templateID, templateParams)
                 .then(() => {
 
