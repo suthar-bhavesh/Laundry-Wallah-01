@@ -7,7 +7,7 @@ const itemError = document.querySelector('.item-error');
 const BookNowBtn = document.querySelector('.book-now-btn');
 const ClientServicerequest = document.querySelectorAll('.Client-request-input');
 const bookingSection = document.querySelector('.adding-item-booking-section');
-const myForm = document.getElementById('Requestform');
+const myForm = document.getElementById('requestform');
 
 const SubscribeForm = document.querySelector('.subscribe-form');
 
@@ -90,6 +90,8 @@ function UpdateTotal() {
     if (TotalDisplay) {
         TotalDisplay.innerText = `₹ ${TotalAmount.toFixed(2)}`;
     }
+
+    return TotalAmount.toFixed(2);
 }
 
 UpdateTotal();
@@ -172,28 +174,43 @@ function formSubmit() {
 
     document.addEventListener('DOMContentLoaded', () => {
 
-        document.getElementById('requestForm')
+        document.getElementById('requestForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const serviceID = 'default_service';
+            const templateID = 'template_p1sillj';
 
 
-            .addEventListener('submit', function (event) {
-                event.preventDefault();
+            const uName = document.querySelector('[name="fullname"]').value;
+            const uEmail = document.querySelector('[name="email"]').value;
+            const uNumber = document.querySelector('[name="number"]').value;
 
-                const serviceID = 'default_service';
-                const templateID = 'template_p1sillj';
+            let EmailTotal = UpdateTotal();
 
-                emailjs.sendForm(serviceID, templateID, this)
-                    .then(() => {
+            const templateParams = {
+                UserFullName: uName,
+                Useremail: uEmail,
+                UserNumber: uNumber,
+                service: Services.map(item => item.name).join(", "),
+                total_price: `${EmailTotal}`
+            };
 
-                        // form input reset
-                        document.getElementById('name').value = "";
-                        document.getElementById('email').value = "";
-                        document.getElementById('number').value = "";
+            console.log("Sending Params", templateParams);
+
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(() => {
+
+                    // form input reset
+                    document.getElementById('name').value = "";
+                    document.getElementById('email').value = "";
+                    document.getElementById('number').value = "";
 
 
 
-                        // again show by default added item list bg text
-                        const ServiceContainer = document.querySelector('.service-list-body');
-                        ServiceContainer.innerHTML = `<tr class="empty-message">
+                    // again show by default added item list bg text
+                    const ServiceContainer = document.querySelector('.service-list-body');
+                    ServiceContainer.innerHTML = `<tr class="empty-message">
                                         <td colspan="3" class="empty-message-cell">
                                             <div class="service-list">
                                                 <i class="fa-solid fa-circle-info"></i>
@@ -204,73 +221,73 @@ function formSubmit() {
                                     </tr>`
 
 
-                        // total price reset
-                        document.querySelector('.Total-Price').innerText = '₹ 0.00';
+                    // total price reset
+                    document.querySelector('.Total-Price').innerText = '₹ 0.00';
 
 
-                        // golbal veriable reset
+                    // golbal veriable reset
 
-                        if (typeof Services !== 'undefined') {
-                            Services = [];
-                            TotalDisplay = 0;
-                        }
-
-
-                        // add item btn reset
-
-                        const resetAddbtn = document.querySelectorAll('.service-btn');
-
-                        if (typeof resetAddbtn !== 'undefined') {
-                            resetAddbtn.forEach((NewServiceAddbtn) => {
-                                NewServiceAddbtn.innerHTML = `Add Item <i class="fa-solid fa-plus"></i>`
-                                NewServiceAddbtn.classList.add('resetbtn');
-                            })
-                        }
+                    if (typeof Services !== 'undefined') {
+                        Services = [];
+                        TotalDisplay = 0;
+                    }
 
 
-                        // Book now btn reset and disable
+                    // add item btn reset
 
-                        if (typeof BookNowBtn !== 'undefined') {
-                            BookNowBtn.disabled = true;
-                            ClientServicerequest.forEach(input => {
-                                BookNowBtn.style.cursor = "not-allowed"
-                                BookNowBtn.classList.add('book-now-btn-disable');
-                            });
-                        }
+                    const resetAddbtn = document.querySelectorAll('.service-btn');
 
-
-                        // after form input error update
-
-                        if (typeof ClientServicerequest !== 'undefined') {
-                            ClientServicerequest.forEach((resetInput) => {
-                                resetInput.addEventListener('click', () => {
-                                    itemError.style.color = 'red';
-                                })
-                            })
-                        }
-
-
-                        NewitemAdd.addEventListener('click', () => {
-                            if (typeof myForm !== 'undefined') {
-                                itemError.classList.add('error-hide');
-                            }
-                            else (
-                                itemError.classList.remove('error-hide')
-                            );
+                    if (typeof resetAddbtn !== 'undefined') {
+                        resetAddbtn.forEach((NewServiceAddbtn) => {
+                            NewServiceAddbtn.innerHTML = `Add Item <i class="fa-solid fa-plus"></i>`
+                            NewServiceAddbtn.classList.add('resetbtn');
                         })
+                    }
 
 
-                        setTimeout(() => {
-                            bookingSection.classList.add('move-up');
-                            itemError.innerHTML = `<i class="fa-solid fa-circle-info"></i> Thank you For
+                    // Book now btn reset and disable
+
+                    if (typeof BookNowBtn !== 'undefined') {
+                        BookNowBtn.disabled = true;
+                        ClientServicerequest.forEach(input => {
+                            BookNowBtn.style.cursor = "not-allowed"
+                            BookNowBtn.classList.add('book-now-btn-disable');
+                        });
+                    }
+
+
+                    // after form input error update
+
+                    if (typeof ClientServicerequest !== 'undefined') {
+                        ClientServicerequest.forEach((resetInput) => {
+                            resetInput.addEventListener('click', () => {
+                                itemError.style.color = 'red';
+                            })
+                        })
+                    }
+
+
+                    NewitemAdd.addEventListener('click', () => {
+                        if (typeof myForm !== 'undefined') {
+                            itemError.classList.add('error-hide');
+                        }
+                        else (
+                            itemError.classList.remove('error-hide')
+                        );
+                    })
+
+
+                    setTimeout(() => {
+                        bookingSection.classList.add('move-up');
+                        itemError.innerHTML = `<i class="fa-solid fa-circle-info"></i> Thank you For
 Booking the Service We will get back to you soon!`;
-                            itemError.classList.add('formSubmit')
-                        }, 1000)
+                        itemError.classList.add('formSubmit')
+                    }, 1000)
 
-                    }, (err) => {
-                        alert(JSON.stringify(err));
-                    });
-            });
+                }, (err) => {
+                    alert(JSON.stringify(err));
+                });
+        });
     })
 }
 
