@@ -1025,10 +1025,6 @@ footer {
         gap: 7px;
     }
 
-    .service-btn {
-        width: 40% !important;
-    }
-
     .item-error {
         font-size: 13px;
         bottom: 47px !important;
@@ -1099,16 +1095,12 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 
-    /* .booking-item-list-right {
-        max-height: 100%;
-    } */
-
     table {
         height: 100%;
     }
 
     .item-error {
-        bottom: 43px;
+        font-size: 12px;
     }
 
     .form-email-fields {
@@ -1134,10 +1126,6 @@ footer {
 
     .service-detail p {
         width: 80px;
-    }
-
-    .service-btn {
-        width: 37%;
     }
 
     .hero-content p {
