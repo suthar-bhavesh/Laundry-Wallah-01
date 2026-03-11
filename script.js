@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const itemaddbtn = document.querySelectorAll('.service-btn');
-    const ServicePrice = document.querySelectorAll('.price');
-    const ServiceName = document.querySelectorAll('.service-name');
-    const NewitemAdd = document.querySelector('.item-add');
+    const itemaddBtn = document.querySelectorAll('.service-btn');
+    const servicePrice = document.querySelectorAll('.price');
+    const serviceName = document.querySelectorAll('.service-name');
+    const newitemAdd = document.querySelector('.item-add');
     const itemError = document.querySelector('.item-error');
-    const BookNowBtn = document.querySelector('.book-now-btn');
-    const ClientServicerequest = document.querySelectorAll('.Client-request-input');
+    const booknowBtn = document.querySelector('.book-now-btn');
+    const clientserviceRequest = document.querySelectorAll('.Client-request-input');
     const bookingSection = document.querySelector('.adding-item-booking-section');
     const myForm = document.getElementById('requestform');
 
@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         menuIcon.classList.toggle('fa-xmark');
     });
 
-    let Services = [];
+    let services = [];
 
     function ServiceTable() {
         const tbody = document.querySelector('.service-list-body');
         tbody.innerHTML = "";
 
-        Services.forEach((item, index) => {
+        services.forEach((item, index) => {
             const tr = document.createElement('tr');
             tr.classList.add('userService');
             tr.innerHTML = `
@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         formDisable();
     }
 
-    ClientServicerequest.forEach((input) => {
+    clientserviceRequest.forEach((input) => {
         input.addEventListener('click', () => {
-            if (Services.length === 0) {
+            if (services.length === 0) {
                 bookingSection.classList.add('move-up');
                 itemError.innerHTML = `<i class="fa-solid fa-circle-info"></i> Add the items to the cart and book`;
                 itemError.classList.add('show');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function UpdateTotal() {
-        const TotalAmount = Services.reduce((acc, item) => {
+        const totalAmount = services.reduce((acc, item) => {
 
             const removeDecimal = item.price.replace(/[^0-9.]/g, '');
 
@@ -66,27 +66,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }, 0);
 
-        const TotalDisplay = document.querySelector('.Total-Price');
+        const totalDisplay = document.querySelector('.Total-Price');
 
-        if (TotalDisplay) {
-            TotalDisplay.innerText = `₹ ${TotalAmount.toFixed(2)}`;
+        if (totalDisplay) {
+            totalDisplay.innerText = `₹ ${totalAmount.toFixed(2)}`;
         }
 
-        return TotalAmount.toFixed(2);
+        return totalAmount.toFixed(2);
     }
 
     UpdateTotal();
 
     function NewServiceList() {
-        itemaddbtn.forEach((Servicelist, index) => {
-            Servicelist.addEventListener('click', () => {
+        itemaddBtn.forEach((serviceList, index) => {
+            serviceList.addEventListener('click', () => {
 
-                Servicelist.innerText = "Add Item";
+                serviceList.innerText = "Add Item";
 
-                const ClientService = ServiceName[index].innerText
-                const ServicePricelist = ServicePrice[index].innerText
+                const ClientService = serviceName[index].innerText
+                const ServicePricelist = servicePrice[index].innerText
 
-                const ServiceIndex = Services.findIndex(item => item.name === ClientService);
+                const ServiceIndex = services.findIndex(item => item.name === ClientService);
 
                 if (ServiceIndex === -1) {
                     const renderServiceList = {
@@ -94,17 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         price: ServicePricelist
                     }
 
-                    Services.push(renderServiceList);
+                    services.push(renderServiceList);
 
-                    Servicelist.innerHTML = `Remove Item <i class="fa-solid fa-minus"></i>`;
-                    Servicelist.classList.add('remove-btn')
+                    serviceList.innerHTML = `Remove Item <i class="fa-solid fa-minus"></i>`;
+                    serviceList.classList.add('remove-btn')
                 }
                 else {
-                    Services.splice(ServiceIndex, 1);
+                    services.splice(ServiceIndex, 1);
 
-                    Servicelist.innerHTML = `Add Item <i
+                    serviceList.innerHTML = `Add Item <i
                                     class="fa-solid fa-plus"></i>`
-                    Servicelist.classList.remove('remove-btn')
+                    serviceList.classList.remove('remove-btn')
                 }
 
                 ServiceTable();
@@ -113,17 +113,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function formDisable() {
-        if (Services.length === 0) {
-            BookNowBtn.disabled = true;
-            ClientServicerequest.forEach(input => {
-                BookNowBtn.style.cursor = "not-allowed"
-                BookNowBtn.classList.add('book-now-btn-disable');
+        if (services.length === 0) {
+            booknowBtn.disabled = true;
+            clientserviceRequest.forEach(input => {
+                booknowBtn.style.cursor = "not-allowed"
+                booknowBtn.classList.add('book-now-btn-disable');
             });
 
         } else {
-            BookNowBtn.disabled = false;
-            BookNowBtn.style.cursor = "pointer";
-            BookNowBtn.classList.remove('book-now-btn-disable');
+            booknowBtn.disabled = false;
+            booknowBtn.style.cursor = "pointer";
+            booknowBtn.classList.remove('book-now-btn-disable');
             if (itemError) itemError.textContent = "";
         }
     }
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 UserFullName: userName,
                 Useremail: userEmail,
                 UserNumber: userNumber,
-                service: Services.map(item => item.name).join(", "),
+                service: services.map(item => item.name).join(", "),
                 total_price: `${EmailTotal}`
             };
 
@@ -190,8 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     document.querySelector('.Total-Price').innerText = '₹ 0.00';
 
-                    if (typeof Services !== 'undefined') {
-                        Services = [];
+                    if (typeof services !== 'undefined') {
+                        services = [];
                         TotalDisplay = 0;
                     }
 
@@ -204,23 +204,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         })
                     }
 
-                    if (typeof BookNowBtn !== 'undefined') {
-                        BookNowBtn.disabled = true;
-                        ClientServicerequest.forEach(input => {
-                            BookNowBtn.style.cursor = "not-allowed"
-                            BookNowBtn.classList.add('book-now-btn-disable');
+                    if (typeof booknowBtn !== 'undefined') {
+                        booknowBtn.disabled = true;
+                        clientserviceRequest.forEach(input => {
+                            booknowBtn.style.cursor = "not-allowed"
+                            booknowBtn.classList.add('book-now-btn-disable');
                         });
                     }
 
-                    if (typeof ClientServicerequest !== 'undefined') {
-                        ClientServicerequest.forEach((resetInput) => {
+                    if (typeof clientserviceRequest !== 'undefined') {
+                        clientserviceRequest.forEach((resetInput) => {
                             resetInput.addEventListener('click', () => {
                                 itemError.style.color = 'red';
                             })
                         })
                     }
 
-                    NewitemAdd.addEventListener('click', () => {
+                    newitemAdd.addEventListener('click', () => {
                         if (typeof myForm !== 'undefined') {
                             itemError.classList.add('error-hide');
                         }
