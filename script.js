@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const booknowBtn = document.querySelector('.book-now-btn');
     const clientserviceRequest = document.querySelectorAll('.Client-request-input');
     const bookingSection = document.querySelector('.adding-item-booking-section');
-    const myForm = document.getElementById('requestform');
+    const bookingForm = document.getElementById('requestForm');
+    const resetList = document.querySelector('.reset-list');
+    const newsletterform = document.getElementById('newsletterSubcribe');
+    const newssubscribeforminputvalue = document.querySelectorAll('.subscribeinput');
 
     const menuIcon = document.querySelector('.menu-icon');
     const menuLinks = document.querySelector('.mobile-menus');
@@ -22,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let services = [];
 
-    function ServiceTable() {
+    function serviceTable() {
         const tbody = document.querySelector('.service-list-body');
         tbody.innerHTML = "";
 
@@ -36,14 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
             tbody.append(tr);
         });
-
-        UpdateTotal();
+        updateTotal();
         formDisable();
     }
 
     clientserviceRequest.forEach((input) => {
         input.addEventListener('click', () => {
             if (services.length === 0) {
+                input.style.cursor = 'not-allowed';
                 bookingSection.classList.add('move-up');
                 itemError.innerHTML = `<i class="fa-solid fa-circle-info"></i> Add the items to the cart and book`;
                 itemError.classList.add('show');
@@ -52,10 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemError.classList.remove('show');
                 }, 3000);
             }
+            else {
+                input.style.cursor = 'text';
+            }
         })
     })
 
-    function UpdateTotal() {
+    function updateTotal() {
         const totalAmount = services.reduce((acc, item) => {
 
             const removeDecimal = item.price.replace(/[^0-9.]/g, '');
@@ -75,23 +81,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return totalAmount.toFixed(2);
     }
 
-    UpdateTotal();
+    updateTotal();
 
-    function NewServiceList() {
+    function newserviceList() {
         itemaddBtn.forEach((serviceList, index) => {
             serviceList.addEventListener('click', () => {
 
                 serviceList.innerText = "Add Item";
 
-                const ClientService = serviceName[index].innerText
-                const ServicePricelist = servicePrice[index].innerText
+                const clientService = serviceName[index].innerText
+                const servicePricelist = servicePrice[index].innerText
 
-                const ServiceIndex = services.findIndex(item => item.name === ClientService);
+                const ServiceIndex = services.findIndex(item => item.name === clientService);
 
                 if (ServiceIndex === -1) {
                     const renderServiceList = {
-                        name: ClientService,
-                        price: ServicePricelist
+                        name: clientService,
+                        price: servicePricelist
                     }
 
                     services.push(renderServiceList);
@@ -107,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     serviceList.classList.remove('remove-btn')
                 }
 
-                ServiceTable();
+                serviceTable();
             });
         });
     };
@@ -129,57 +135,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     formDisable();
-    UpdateTotal();
-    NewServiceList();
+    updateTotal();
+    newserviceList();
 
-    function formSubmit() {
+    const serviceID = 'service_npftzkc';
+
+    const validname = /^(?!.*(.)\1{2,})[a-zA-Z\s-']+$/;
+    const validemail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validnumber = /^[6-9]\d{9}$/;
+    let IsformValid = true;
+
+    function bookingformSubmit() {
 
         emailjs.init({
-            publicKey: "CS1ZjwpreNA_8iGpU",
+            publicKey: 'CS1ZjwpreNA_8iGpU',
             blockHeadless: true,
             limitRate: {
                 id: 'app',
-                throttle: 10000,
-            }
+                throttle: 1000,
+            },
         });
 
-        document.getElementById('requestForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+        const templateID = 'template_p1sillj';
 
-            const serviceID = 'default_service';
-            const templateID = 'template_p1sillj';
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-            const userName = document.querySelector('[name="fullname"]').value;
-            const userEmail = document.querySelector('[name="email"]').value;
-            const userNumber = document.querySelector('[name="number"]').value;
+            const UserName = document.querySelector('[name="fullname"]').value;
+            const UserEmail = document.querySelector('[name="email"]').value;
+            const UserNumber = document.querySelector('[name="number"]').value;
 
-            const PhoneNumberValidation = document.querySelector('.phone-Numbar');
-            const userNumberValue = PhoneNumberValidation.value;
-            const PhoneNumberPattern = /^[6-9]\d{9}$/;
 
-            if (!PhoneNumberPattern.test(userNumberValue)) {
-                return
-            };
+            clientserviceRequest.forEach((Inputs) => {
+                const InputsValue = Inputs.value.trim();
 
-            let EmailTotal = UpdateTotal();
+                if (InputsValue !== "" && validname.test(UserName)) {
+                    Inputs.style.border = "1px solid green";
+                }
+                else if (InputsValue !== "" && validemail.test(UserEmail)) {
+                    Inputs.style.border = "1px solid green";
+                }
+                else if (InputsValue !== "" && validnumber.test(UserNumber)) {
+                    Inputs.style.border = "1px solid green";
+                }
+                else {
+                    IsformValid = false;
+                    Inputs.style.border = "1px solid red";
+                }
+            })
 
-            const UserEmailfields = {
-                UserFullName: userName,
-                Useremail: userEmail,
-                UserNumber: userNumber,
-                service: services.map(item => item.name).join(", "),
-                total_price: `${EmailTotal}`
-            };
+            let emailtotal = updateTotal();
 
-            emailjs.send(serviceID, templateID, UserEmailfields)
-                .then(() => {
-                    document.getElementById('name').value = "";
-                    document.getElementById('email').value = "";
-                    document.getElementById('number').value = "";
+            const formParams = {
+                fullName: UserName,
+                emailAddress: UserEmail,
+                userphoneNumber: UserNumber,
+                emailservice: services.map(Ordername => Ordername.name).join(','),
+                totalservicePrice: `${emailtotal}`,
+            }
 
-                    const ServiceContainer = document.querySelector('.service-list-body');
-                    ServiceContainer.innerHTML = `<tr class="empty-message">
-                                        <td colspan="3" class="empty-message-cell">
+            if (IsformValid) {
+                emailjs.send(serviceID, templateID, formParams).then((res) => {
+
+
+                    clientserviceRequest.forEach((resetInput) => {
+                        resetInput.value = "";
+                        resetInput.style.borderColor = "#e9ecef";
+                    })
+
+                    const resetemptyMessage = document.querySelector('.service-list-body');
+                    resetemptyMessage.innerHTML = `<tr class="empty-message">
+                                        <td class="empty-message-cell">
                                             <div class="service-list">
                                                 <i class="fa-solid fa-circle-info"></i>
                                                 <p>No Items Added</p>
@@ -188,60 +214,65 @@ document.addEventListener('DOMContentLoaded', () => {
                                         </td>
                                     </tr>`
 
-                    document.querySelector('.Total-Price').innerText = '₹ 0.00';
+                    const resettotalAmount = document.querySelector('.Total-Price')
+                    resettotalAmount.innerText = '₹ 0.00';
 
-                    if (typeof services !== 'undefined') {
-                        services = [];
-                        TotalDisplay = 0;
-                    }
 
-                    const resetAddbtn = document.querySelectorAll('.service-btn');
+                    itemaddBtn.forEach((resetBtn) => {
+                        resetBtn.innerHTML = `Add Item <i
+                                    class="fa-solid fa-plus"></i>`;
+                        resetBtn.classList.add('resetbtn');
+                    })
 
-                    if (typeof resetAddbtn !== 'undefined') {
-                        resetAddbtn.forEach((NewServiceAddbtn) => {
-                            NewServiceAddbtn.innerHTML = `Add Item <i class="fa-solid fa-plus"></i>`
-                            NewServiceAddbtn.classList.add('resetbtn');
-                        })
-                    }
-
-                    if (typeof booknowBtn !== 'undefined') {
-                        booknowBtn.disabled = true;
-                        clientserviceRequest.forEach(input => {
-                            booknowBtn.style.cursor = "not-allowed"
-                            booknowBtn.classList.add('book-now-btn-disable');
-                        });
-                    }
-
-                    if (typeof clientserviceRequest !== 'undefined') {
-                        clientserviceRequest.forEach((resetInput) => {
-                            resetInput.addEventListener('click', () => {
-                                itemError.style.color = 'red';
-                            })
-                        })
-                    }
-
-                    newitemAdd.addEventListener('click', () => {
-                        if (typeof myForm !== 'undefined') {
-                            itemError.classList.add('error-hide');
-                        }
-                        else (
-                            itemError.classList.remove('error-hide')
-                        );
+                    resetList.addEventListener('click', () => {
+                        itemError.classList.add('error-hide');
                     })
 
                     setTimeout(() => {
                         bookingSection.classList.add('move-up');
-                        itemError.innerHTML = `<i class="fa-solid fa-circle-info"></i> Thank you For
-Booking the Service We will get back to you soon!`;
-                        itemError.classList.add('formSubmit')
-                    }, 1000)
+                        itemError.innerHTML = `<i class="fa-solid fa-circle-info"></i> Thank you for Booking the service We Will get back to you soon!`;
+                        itemError.classList.add('formSubmit');
+                    }, 500)
+
+                    bookingForm.reset();
 
                 }, (err) => {
-                    alert(JSON.stringify(err));
-                });
-        });
+                    console.log(err)
+                })
+            }
+        })
     }
 
-    formSubmit();
+    bookingformSubmit()
 
+
+    const newslettersubscribeForm = () => {
+
+        emailjs.init({
+            publicKey: 'CS1ZjwpreNA_8iGpU',
+            blockHeadless: true,
+            limitRate: {
+                id: 'app',
+                throttle: 1000,
+            },
+        });
+
+
+        newsletterform.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const subscriberUsername = document.querySelector('[type="name"]').value;
+            const subscriberEmail = document.querySelector('[type="email"]').value;
+
+            let formvalid = true;
+
+
+            newssubscribeforminputvalue.forEach((subscribeforminput) => {
+                
+            })
+        })
+
+
+    }
+    newslettersubscribeForm()
 })
