@@ -646,12 +646,13 @@ td:nth-child(2) {
 .inputfields {
     display: flex;
     gap: 10px;
+    flex-direction: column;
 }
 
 .subscribe-form-fields input {
     background-color: #4BB5F9;
     padding: 15px;
-    width: 250px;
+    width: 100%;
     border: none;
     outline: none;
     font-size: 15px;
@@ -795,6 +796,11 @@ footer {
     display: none;
 }
 
+.subscribeuserInputs {
+    display: flex;
+    gap: 10px;
+}
+
 @media screen and (max-width:768px) {
 
     .hero-content {
@@ -829,6 +835,8 @@ footer {
 
     .subscribe-form-fields input {
         width: 100%;
+        padding: 10px;
+        font-size: 11px;
     }
 
     nav {
@@ -1148,7 +1156,7 @@ footer {
     }
 
     .service-btn {
-        width: 35%;
+        width: 36%;
     }
 
 

@@ -305,13 +305,19 @@
                     <h2>Subscribe to our newsletter.</h2>
                 </div>
                 <div class="subscribe-form">
-                    <form class="subscribe-form" id="newsletterSubcribe">
+                    <form class="subscribe-form" id="newsletterSubscribe">
                         <div class="subscribe-form-fields">
-                            <div class="inputfields">
-                                <input type="text" name="name" id="name" placeholder="Full Name" class="subscribeinput">
-                                <input type="email" name="email" id="email" placeholder="Email Address"
-                                    class="subscribeinput">
-                            </div>
+                            <div class="subscribeuserInputs">
+                                <div class="inputfields">
+                                    <input type="text" name="fullname" id="name" placeholder="Full Name"
+                                        class="subscribeuserInput" required>
+                                </div>
+                                <div class="inputfields">
+                                    <input type="email" name="email" id="email" placeholder="Email Address"
+                                        class="subscribeuserInput" required>
+                                    </div>
+                                </div>
+                                <p class="success-message"></p>
                             <div class="subscribe-btn">
                                 <button>Subscribe</button>
                             </div>

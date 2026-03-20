@@ -3,15 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemaddBtn = document.querySelectorAll('.service-btn');
     const servicePrice = document.querySelectorAll('.price');
     const serviceName = document.querySelectorAll('.service-name');
-    const newitemAdd = document.querySelector('.item-add');
     const itemError = document.querySelector('.item-error');
     const booknowBtn = document.querySelector('.book-now-btn');
     const clientserviceRequest = document.querySelectorAll('.Client-request-input');
     const bookingSection = document.querySelector('.adding-item-booking-section');
     const bookingForm = document.getElementById('requestForm');
     const resetList = document.querySelector('.reset-list');
-    const newsletterform = document.getElementById('newsletterSubcribe');
-    const newssubscribeforminputvalue = document.querySelectorAll('.subscribeinput');
+    const newsletterform = document.getElementById('newsletterSubscribe');
+    const newssubscribeforminputvalue = document.querySelectorAll('.subscribeuserInput');
 
     const menuIcon = document.querySelector('.menu-icon');
     const menuLinks = document.querySelector('.mobile-menus');
@@ -140,10 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const serviceID = 'service_npftzkc';
 
-    const validname = /^(?!.*(.)\1{2,})[a-zA-Z\s-']+$/;
-    const validemail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const validnumber = /^[6-9]\d{9}$/;
-    let IsformValid = true;
+    const nameRegex = /^(?!.*(.)\1{2,})[a-zA-Z\s-']+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const numberRegex = /^[6-9]\d{9}$/;
 
     function bookingformSubmit() {
 
@@ -165,17 +163,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const UserEmail = document.querySelector('[name="email"]').value;
             const UserNumber = document.querySelector('[name="number"]').value;
 
+            let IsformValid = true;
 
             clientserviceRequest.forEach((Inputs) => {
                 const InputsValue = Inputs.value.trim();
 
-                if (InputsValue !== "" && validname.test(UserName)) {
+                if (InputsValue !== "" && nameRegex.test(UserName)) {
                     Inputs.style.border = "1px solid green";
                 }
-                else if (InputsValue !== "" && validemail.test(UserEmail)) {
+                else if (InputsValue !== "" && emailRegex.test(UserEmail)) {
                     Inputs.style.border = "1px solid green";
                 }
-                else if (InputsValue !== "" && validnumber.test(UserNumber)) {
+                else if (InputsValue !== "" && numberRegex.test(UserNumber)) {
                     Inputs.style.border = "1px solid green";
                 }
                 else {
@@ -257,21 +256,27 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
 
+        const newslettertemplate = 'template_rk2kp2k';
 
         newsletterform.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const subscriberUsername = document.querySelector('[type="name"]').value;
-            const subscriberEmail = document.querySelector('[type="email"]').value;
+            emailjs.sendForm(serviceID, newslettertemplate, '#newsletterSubscribe').then((res) => {
 
-            let formvalid = true;
+                newssubscribeforminputvalue.forEach((userInputs) => {
+                    userInputs.value = "";
+                })
+
+                setTimeout(() => {
+                    alert('Thank you for Successfully Subscribed our News letter services!');
+                }, 200)
 
 
-            newssubscribeforminputvalue.forEach((subscribeforminput) => {
-                
+            }, (err) => {
+                console.log(err);
             })
-        })
 
+        })
 
     }
     newslettersubscribeForm()
