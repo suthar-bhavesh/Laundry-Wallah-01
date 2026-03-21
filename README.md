@@ -18,10 +18,9 @@ Laundry Wala Service Website instructions....
 8. Footer - This is the website footer where I have added different types of links like Logo, about company paragraph, important links, contact us, and social media links.
 
 
-
 Now, talk about which challenges I faced when I was working on the email.js setup.
 
-1. When I first started working on email.js setup, I was stuck on how to configure and initialize. Then, after trying multiple times, I visited the Email.js service website and took some learning about how to configure the read documentation. I was unable to declare a variable, define valid parameters, and create a mistake, then lastly successfully configured email.js and initial level i am struggled in how to run loop and how to handle form params between multiple thing i have stucked, then after try again and again i understand properly then after implemented my method submit form.
+1. Initial level i am working on email.js i am dont know about how to configuer and how to working with email.js i am failled multiples times configire and installatioion then after i taken help of documention of email.js. then debuging errors end fixing variables and matching variable names form to email.js templates then after fix all the errors then has been send to recepients. 
 
 2. This is about form validation, which is very critical for beginners. I have used regex validation in form submission, which is a very powerful method for validation. This checks one-to-one for every word in the form input.
 
