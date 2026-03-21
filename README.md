@@ -26,8 +26,8 @@ Now, talk about which challenges I faced when I was working on the email.js setu
 
 
 
-That's it all about i worked in Laundry Wala Service website. 
+That's it all about. I worked in Laundry Wala Service website. 
 
-Note: I have build this website without take any help with AI tools. all code written by according to me understanding of self studies. so please give any flag regarding AI tools. 
+Note: I have build this website without take any help with AI tools. all code written by according to me understanding of self studies. So please don't give any flags regarding AI tools. 
 
 Thank you
