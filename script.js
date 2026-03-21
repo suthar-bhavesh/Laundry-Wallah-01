@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetList = document.querySelector('.reset-list');
     const newsletterform = document.getElementById('newsletterSubscribe');
     const newssubscribeforminputvalue = document.querySelectorAll('.subscribeuserInput');
-
     const menuIcon = document.querySelector('.menu-icon');
     const menuLinks = document.querySelector('.mobile-menus');
 
@@ -143,16 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const numberRegex = /^[6-9]\d{9}$/;
 
+    emailjs.init({
+        publicKey: 'CS1ZjwpreNA_8iGpU',
+        blockHeadless: true,
+        limitRate: {
+            id: 'app',
+            throttle: 1000,
+        },
+    });
+
+
     function bookingformSubmit() {
 
-        emailjs.init({
-            publicKey: 'CS1ZjwpreNA_8iGpU',
-            blockHeadless: true,
-            limitRate: {
-                id: 'app',
-                throttle: 1000,
-            },
-        });
 
         const templateID = 'template_p1sillj';
 
@@ -246,15 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const newslettersubscribeForm = () => {
-
-        emailjs.init({
-            publicKey: 'CS1ZjwpreNA_8iGpU',
-            blockHeadless: true,
-            limitRate: {
-                id: 'app',
-                throttle: 1000,
-            },
-        });
 
         const newslettertemplate = 'template_rk2kp2k';
 
