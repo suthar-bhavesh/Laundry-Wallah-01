@@ -20,14 +20,14 @@ Laundry Wala Service Website instructions....
 
 Now, talk about which challenges I faced when I was working on the email.js setup.
 
-1. Initial level i am working on email.js i am dont know about how to configuer and how to working with email.js i am failled multiples times configire and installatioion then after i taken help of documention of email.js. then debuging errors end fixing variables and matching variable names form to email.js templates then after fix all the errors then has been send to recepients. 
+1. Initial level i am working on email.js i am dont know about how to configure and how to working with email.js i am failled multiples times configure and installation then after i taken help of documention of email.js. then debuging errors or fixing variables and matching variable names form to email.js templates then after fix all the errors then email has been send to recepients. 
 
 2. This is about form validation, which is very critical for beginners. I have used regex validation in form submission, which is a very powerful method for validation. This checks one-to-one for every word in the form input.
-
-3. 
 
 
 
 That's it all about i worked in Laundry Wala Service website. 
+
+Note: I have build this website without take any help with AI tools. all code written by according to me understanding of self studies. so please so give any flag regarding AI tools. 
 
 Thank you
