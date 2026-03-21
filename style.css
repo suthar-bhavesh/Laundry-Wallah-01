@@ -179,7 +179,6 @@ span {
 
 .service-section {
     background-color: #F6F8FA;
-    /* margin-top: 50px; */
 }
 
 .client-booking-dashboard {
@@ -208,7 +207,7 @@ span {
 
 .section-heading-para {
     border-bottom: 2px solid #e9ecef;
-    padding-bottom: 35spx;
+    padding-bottom: 35px;
 }
 
 .section-heading-para p {

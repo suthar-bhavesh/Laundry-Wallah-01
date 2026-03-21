@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const itemaddBtn = document.querySelectorAll('.service-btn');
     const servicePrice = document.querySelectorAll('.price');
     const serviceName = document.querySelectorAll('.service-name');

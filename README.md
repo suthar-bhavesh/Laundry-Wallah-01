@@ -21,9 +21,11 @@ Laundry Wala Service Website instructions....
 
 Now, talk about which challenges I faced when I was working on the email.js setup.
 
-1. When I first started working on email.js setup, I was stuck on how to configure and initialize. Then, after trying multiple times, I visited the Email.js service website and took some learning about how to configure the read documentation. I was unable to declare a variable, define valid parameters, and create a mistake, then lastly successfully configured email.js. 
+1. When I first started working on email.js setup, I was stuck on how to configure and initialize. Then, after trying multiple times, I visited the Email.js service website and took some learning about how to configure the read documentation. I was unable to declare a variable, define valid parameters, and create a mistake, then lastly successfully configured email.js and initial level i am struggled in how to run loop and how to handle form params between multiple thing i have stucked, then after try again and again i understand properly then after implemented my method submit form.
 
-2. This is about form validation, which is very critical for beginners. I have used regex validation in form submission, which is a very powerful method for validation. This checks one-to-one for every word in the form input. 
+2. This is about form validation, which is very critical for beginners. I have used regex validation in form submission, which is a very powerful method for validation. This checks one-to-one for every word in the form input.
+
+3. 
 
 
 
